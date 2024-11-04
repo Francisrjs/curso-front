@@ -1,0 +1,64 @@
+.btn-primary {
+    background-color: #007bff; /* Cambia el color de fondo */
+    border-color: #007bff; /* Cambia el color del borde */
+}
+.form-group {
+    display: flex;
+    flex-direction: column; /* Para que label y input estén en columnas */
+    gap: 10px;
+    margin-top: 5px;
+    width: 100%;
+}
+.alumnos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Tres columnas iguales */
+    gap: 15px; /* Espaciado entre elementos */
+    margin-top: 10px; /* Separación de la etiqueta */
+  }
+  .overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  
+  .register-form {
+    background-color: #fff;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh; /* Limita la altura del formulario */
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    border-radius: 8px;
+    position: relative;
+    padding: 20px;
+  }
+  
+  .cartel {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 10;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .container-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .container-title .title {
+    flex-grow: 1;
+    text-align: left;
+  }
+  .dates{
+    display: flex;
+    gap: 10px;
+  }

@@ -1,0 +1,47 @@
+<!-- Option 1: Include in HTML -->
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<!-- Font Awesome sin el atributo integrity -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<div class="container mt-5">
+<h1 class="text-center mb-4">  <i class="fa fa-users" aria-hidden="true"></i>Temas</h1>
+
+  <ul class="list-group">
+    <li 
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let tema of temas" 
+      (mouseenter)="onMouseEnter(tema)" 
+      (mouseleave)="onMouseLeave()"
+    >
+      <span>
+        [{{tema.id}}] - {{ tema.nombre }} - Legajo: {{ tema.descripcion }} 
+        
+      </span>
+
+      <!-- Botones visibles al hacer hover -->
+      <span *ngIf="tema === hoveredTema">
+        <button class="btn btn-sm btn-danger me-2" (click)="onDelete(tema)">
+          <i class="bi bi-trash"></i> Eliminar
+        </button>
+        <button class="btn btn-sm btn-primary" (click)="onEdit(tema)">
+          <i class="bi bi-pencil"></i> Editar
+        </button>
+      </span>
+    </li>
+  </ul>
+</div>
+<div class="container-form">
+  <app-tema-form
+    *ngIf="formVisible"
+    [tema]="selectedTema"
+    (close)="closeForm()"
+  ></app-tema-form>
+  </div>
+  <button class="btn btn-floating" (click)="formVisible = !formVisible">
+    <i class="fas fa-plus"></i>
+  </button>

@@ -1,0 +1,24 @@
+.btn-floating {
+    position: fixed; /* Mantiene el botón en la posición fija */
+    bottom: 20px;    /* Espaciado desde la parte inferior */
+    right: 20px;     /* Espaciado desde la derecha */
+    border-radius: 50%; /* Hace el botón circular */
+    width: 60px;     /* Ancho del botón */
+    height: 60px;    /* Alto del botón */
+    display: flex;   /* Para centrar el icono dentro */
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    font-size: 24px; /* Tamaño del icono */
+    background-color: red; /* Color de fondo */
+    color: white; /* Color del icono */
+    border: none; /* Sin borde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave para hover y transformación */
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+  }
+  
+  /* Efecto al pasar el cursor */
+  .btn-floating:hover {
+    background-color: #c0392b; /* Color más oscuro al pasar el cursor */
+    transform: translateY(-2px); /* Levanta el botón ligeramente */
+  }

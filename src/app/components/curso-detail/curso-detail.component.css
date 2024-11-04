@@ -1,0 +1,32 @@
+.input-filters{
+    display: flex;
+    justify-content: space-around
+   
+}
+.date-inputs{
+    display: flex;
+    gap: 10px;
+}
+.btn-sm{
+    margin-right: 10px;
+}
+.btn-floating {
+    position: fixed; /* Mantiene el botón en la posición fija */
+    bottom: 20px;    /* Espaciado desde la parte inferior */
+    right: 20px;     /* Espaciado desde la derecha */
+    border-radius: 50%; /* Hace el botón circular */
+    width: 50%;
+    height: 50%;
+    display: flex;   /* Para centrar el icono dentro */
+    align-items: center; /* Alineación vertical */
+    justify-content: center; /* Alineación horizontal */
+    
+    background-color: blue; /* Color de fondo */
+    color: white; /* Color del icono */
+    border: none; /* Sin borde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave para hover y transformación */
+    z-index: 1000; /* Asegura que el botón esté por encima de otros elementos */
+  }
+  
+  

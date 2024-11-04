@@ -1,0 +1,95 @@
+<div class="overlay" (click)="closeForm()">
+  <div class="register-form" (click)="$event.stopPropagation()"> 
+    <div class="cartel">
+      <div class="container-title"> 
+        <div class="title">
+          <h2>Nuevo Alumno</h2>
+        </div>
+        <div>
+          <button type="button" class="btn btn-outline-danger" id="close" (click)="closeForm()">X</button>
+        </div>
+      </div>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="f.form.valid && OnSave()">
+      <!-- Checkbox para habilitar edición del ID -->
+      <div class="form-check">
+        <input 
+          type="checkbox" 
+          id="enableIdEdit" 
+          name="enableIdEdit" 
+          class="form-check-input"
+          [(ngModel)]="enableIdEdit"
+          (change)="onEnableIdEditChange()"
+        />
+        <label for="enableIdEdit" class="form-check-label">Habilitar edición del ID</label>
+      </div>
+
+      <!-- Campo ID (editable solo si el checkbox está activado) -->
+      <div class="form-group">
+        <label for="id">ID del Alumno</label>
+        <input 
+          type="number" 
+          id="id" 
+          name="id" 
+          placeholder="ID del Alumno"
+          class="form-control" 
+          [(ngModel)]="newAlumno.id" 
+          #id="ngModel"
+          [readonly]="!enableIdEdit" 
+        />
+      </div>
+
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre del Alumno</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          name="nombre" 
+          placeholder="Nombre del Alumno*"
+          class="form-control" 
+          minlength="3" 
+          maxlength="30" 
+          required
+          [(ngModel)]="newAlumno.nombre" 
+          #nombre="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && nombre.errors }" 
+        />
+        <div *ngIf="f.submitted && nombre.errors" class="invalid-feedback">
+          <div *ngIf="nombre.errors['required']">El nombre es obligatorio</div>
+          <div *ngIf="nombre.errors['minlength']">El nombre debe tener al menos 3 caracteres</div>
+          <div *ngIf="nombre.errors['maxlength']">El nombre no debe exceder los 30 caracteres</div>
+        </div>
+      </div>
+
+      <!-- Campo Edad -->
+      <div class="form-group">
+        <label for="edad">Fecha nacimiento</label>
+        <input 
+          type="date" 
+          id="fechaNacimiento" 
+          name="fechaNacimiento" 
+          placeholder="fechaNacimiento"
+          class="form-control" 
+          min="1" 
+          required
+          [(ngModel)]="newAlumno.fechaNacimiento" 
+          #edad="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && edad.errors }" 
+        />
+        <div *ngIf="f.submitted && edad.errors" class="invalid-feedback">
+          <div *ngIf="edad.errors['required']">La edad es obligatoria</div>
+          <div *ngIf="edad.errors['min']">La edad mínima es 1</div>
+          <div *ngIf="edad.errors['max']">La edad máxima es 120</div>
+        </div>
+      </div>
+
+      <!-- Botones Guardar y Reset -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn btn-warning float-right">Resetear</button>
+      </div>
+    </form>
+  </div>
+</div>

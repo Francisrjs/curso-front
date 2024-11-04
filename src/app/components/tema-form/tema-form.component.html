@@ -1,0 +1,88 @@
+<div class="overlay" (click)="closeForm()">
+  <div class="register-form" (click)="$event.stopPropagation()"> 
+    <div class="cartel">
+      <div class="container-title"> 
+        <div class="title">
+          <h2>Nuevo Tema</h2>
+        </div>
+        <div>
+          <button type="button" class="btn btn-outline-danger" id="close" (click)="closeForm()">X</button>
+        </div>
+      </div>
+    </div>
+    <form #f="ngForm" (ngSubmit)="f.form.valid && OnSave()">
+  
+      <!-- Checkbox para habilitar edición del ID -->
+      <div class="form-check">
+        <input 
+          type="checkbox" 
+          id="enableIdEdit" 
+          name="enableIdEdit" 
+          class="form-check-input"
+          [(ngModel)]="enableIdEdit"
+          (change)="onEnableIdEditChange()"
+        />
+        <label for="enableIdEdit" class="form-check-label">Habilitar edición del ID</label>
+      </div>
+  
+      <!-- Campo ID (editable solo si el checkbox está activado) -->
+      <div class="form-group">
+        <label for="id">ID del Tema</label>
+        <input 
+          type="number" 
+          id="id" 
+          name="id" 
+          placeholder="ID del Tema"
+          class="form-control" 
+          [(ngModel)]="newTema.id" 
+          #id="ngModel"
+          min="0"
+          [readonly]="!enableIdEdit" 
+        />
+      </div>
+  
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="nombre">Nombre del Tema</label>
+        <input 
+          type="text" 
+          id="nombre" 
+          name="nombre" 
+          placeholder="Nombre del Tema*"
+          class="form-control" 
+          minlength="3" 
+          maxlength="30" 
+          required
+          [(ngModel)]="newTema.nombre" 
+          #nombre="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && nombre.errors }" 
+        />
+        <div *ngIf="f.submitted && nombre.errors" class="invalid-feedback">
+          <div *ngIf="nombre.errors['required']">El nombre es obligatorio</div>
+          <div *ngIf="nombre.errors['minlength']">El nombre debe tener al menos 3 caracteres</div>
+          <div *ngIf="nombre.errors['maxlength']">El nombre no debe exceder los 30 caracteres</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripcion del Tema</label>
+        <input 
+          type="long" 
+          descripcion="descripcion" 
+          name="descripcion" 
+          placeholder="ID del Tema"
+          class="form-control" 
+          [(ngModel)]="newTema.descripcion" 
+          #descripcion="ngModel"
+          
+        />
+      </div>
+      <!-- Botones Guardar y Reset -->
+       
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="reset" class="btn btn-warning float-right">Resetear</button>
+      </div>
+    </form>
+  
+  </div>
+  

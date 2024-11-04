@@ -1,0 +1,18 @@
+.register-form {
+    width: 30%;
+    margin: auto; /* Centra horizontalmente */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Opcional: fondo para destacarlo */
+    border-radius: 8px; /* Opcional: bordes redondeados */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Para que label y input estén en columnas */
+    gap: 10px;
+    margin-top: 5px;
+    width: 100%;
+}
